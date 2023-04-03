@@ -45,8 +45,8 @@ public class Disciplina {
 	/**
 	* Constrói um objeto Disciplina a partir do nome e quantidade de notas passado como parâmetros e dados pré definidos.
 	*
-	* @param nome da disciplina em string.
-	* @param quantidade de notas em int
+	* @param nomeDisciplina da disciplina em string.
+	* @param quantNotas de notas em int
 	*/
 	public Disciplina(String nomeDisciplina, int quantNotas) {
 		this(nomeDisciplina, quantNotas, new double[quantNotas]);
@@ -57,7 +57,7 @@ public class Disciplina {
 	* Constrói um objeto Disciplina a partir do nome passado como parâmetro 
 	* e dados pré definidos.
 	*
-	* @param nome da disciplina em string.
+	* @param nomeDisciplina da disciplina em string.
 	*/
 	public Disciplina(String nomeDisciplina) {
 		this(nomeDisciplina, 4, new double[4]);
@@ -67,8 +67,8 @@ public class Disciplina {
 	/**
 	* Sem retorno, cadastra uma nova nota ao array de notas, acessado por posição.
 	*
-	* @param em int, a nota (dentre as 4 possíveis) a ser adicionada, tratamos com -1 para corresponder à indexação do array.
-	* @param em double, o valor da nota a ser adicionada.
+	* @param nota int, a nota (dentre as 4 possíveis) a ser adicionada, tratamos com -1 para corresponder à indexação do array.
+	* @param valorNota double, o valor da nota a ser adicionada.
 	*/
 	public void cadastraNota(int nota, double valorNota) {
 		notas[nota - 1] = valorNota;
@@ -77,7 +77,7 @@ public class Disciplina {
 	/**
 	* Sem retorno, adiciona horas de estudo ao registro (cumulativo).
 	*
-	* @param em int, a quantidade de horas a serem somadas.
+	* @param horas int, a quantidade de horas a serem somadas.
 	*/
 	public void cadastraHoras(int horas) {
 		horasCadastradas += horas;
