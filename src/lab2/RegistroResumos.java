@@ -11,13 +11,13 @@ public class RegistroResumos {
 	/**
 	* Array que irá conter os dados literais dos resumos, o texto em si.
 	*/
-	private String[] resumos;
+	private final String[] resumos;
 	/**
 	* Array que contém os temas dos resumos.
 	*/
-	private String[] temas;
+	private final String[] temas;
 	/**
-	* Quantidade de vezes que foram adicionado resumos, independente do numero de resumos que permanecem.
+	* Quantidade de vezes que foram adicionados resumos, independente do número de resumos que permanecem.
 	*/
 	private int numeroRegistros;
 	
@@ -26,7 +26,7 @@ public class RegistroResumos {
 	* arrays de tamanho definido pelo usuário, correspondentes aos resumos e temas. 
 	* Também inicializa em zero o número de registros.
 	* 
-	* @param em int, a capacidade do array de resumos.
+	* @param numeroDeResumos int, a capacidade do array de resumos.
 	*/
 	
 	public RegistroResumos(int numeroDeResumos) {
@@ -39,14 +39,14 @@ public class RegistroResumos {
 	
 	/**
 	* Sem retorno, adiciona um resumo ao array de resumos, e o tema ao de temas, 
-	* também contabiliza a adição na variável numeroRegsitros.
+	* também contabiliza a adição na variável numeroRegistros.
 	* O tema e o resumo são adicionados a indexes correspondentes nos seus arrays.
 	* 
-	* @param String tema, o tema do resumo.
-	* @param string resumo, o conteúdo do resumo.
+	* @param tema, String o tema do resumo.
+	* @param resumo, String o conteúdo do resumo.
 	*/
 	public void adiciona(String tema, String resumo) {
-		// o operador resto permite saber qual o próximo local que deverá ser 
+		// o operador resto permite saber qual o próximo local que deverá ser
 		// substituído em caso de sobreposição.
 		resumos[numeroRegistros % resumos.length] = resumo;
 		temas[numeroRegistros % resumos.length] = tema;
@@ -72,7 +72,7 @@ public class RegistroResumos {
 	* Retorna a quantidade de resumos registrados
 	* Como a implementação do array de resumos nesta classe permite sobreposição, o número
 	* de registros pode ser maior que o número de resumos realmente guardados na memória. 
-	* Portanto encontramos o número de resumos guardados procurando o menor entre o número de resgistros e o
+	* Portanto, encontramos o número de resumos guardados procurando o menor entre o número de registros e o
 	* tamanho do array.
 	*
 	* @return em int, a quantidade de resumos registrados na memória.
@@ -96,7 +96,7 @@ public class RegistroResumos {
 			// implementação imprime temas que se repetem apenas uma vez, pois
 			// como lista de conteúdos, é suficiente
 			// caso houvesse um sistema de "arquivos" poderiam ser
-			// guardados resumos dentro de uma matriz de listas de temas?
+			// guardados resumos numa matriz de listas de temas?
 			if (!impressao.contains(temas[i])) {
 				if (! impressao.equals("")) {
 					impressao += " | " + temas[i];
@@ -112,8 +112,8 @@ public class RegistroResumos {
 	/**
 	* Informa se há resumo sobre o tema buscado.
 	*
-	* @param em String, o tema a ser buscado.
-	* @return em boolean, true se houver resumo sobre aquele tema, false se não houver.
+	* @param buscaTema String, o tema a ser buscado.
+	* @return boolean, true se houver resumo sobre aquele tema, false se não houver.
 	*/
 	public boolean temResumo(String buscaTema) {
 		for (String tema : temas) {
@@ -128,7 +128,7 @@ public class RegistroResumos {
 	* Busca a string informada como parâmetro no conteúdo dos resumos, e retorna
 	* os temas nos quais foi encontrada a string buscada, em ordem lexicográfica.
 	*
-	* @param em String, o trecho a ser buscado.
+	* @param chaveDeBusca String, o trecho a ser buscado.
 	* @return array de strings contendo os temas em que a string buscada aparece.
 	*/
 	public String[] busca(String chaveDeBusca) {

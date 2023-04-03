@@ -10,13 +10,9 @@ import java.util.Arrays;
 */
 public class Disciplina {
 	/**
-	* Constante que contém a média mínima para ser aprovado na disciplina.
-	*/
-	final private double MEDIA_MINIMA = 7.0;
-	/**
 	* Array de notas da disciplina. Até quatro.
 	*/
-	private double[] notas;
+	private final double[] notas;
 	/**
 	* Horas de estudo cadastradas.
 	*/
@@ -31,9 +27,9 @@ public class Disciplina {
 	* Constrói um objeto Disciplina a partir do nome, quantidade de notas 
 	* e array de pesos passados como parâmetros.
 	*
-	* @param nome da disciplina em string.
-	* @param quantidade de notas em int.
-	* @param array de pesos em double (passados por nome).
+	* @param nomeDisciplina da disciplina em string.
+	* @param quantNotas quantidade de notas em int.
+	* @param pesos array de pesos em double (passados por nome).
 	*/
 	public Disciplina(String nomeDisciplina, int quantNotas, double[] pesos) {
 		this.nomeDisciplina = nomeDisciplina;
@@ -43,7 +39,7 @@ public class Disciplina {
 	}
 	
 	/**
-	* Constrói um objeto Disciplina a partir do nome e quantidade de notas passado como parâmetros e dados pré definidos.
+	* Constrói um objeto Disciplina a partir do nome e quantidade de notas passado como parâmetros e dados pré-definidos.
 	*
 	* @param nomeDisciplina da disciplina em string.
 	* @param quantNotas de notas em int
@@ -55,7 +51,7 @@ public class Disciplina {
 	
 	/**
 	* Constrói um objeto Disciplina a partir do nome passado como parâmetro 
-	* e dados pré definidos.
+	* e dados pré-definidos.
 	*
 	* @param nomeDisciplina da disciplina em string.
 	*/
@@ -104,11 +100,8 @@ public class Disciplina {
 	* @return boolean, false se foi reprovado, true se foi aprovado.
 	*/
 	public boolean aprovado() {
-		if (media() >= MEDIA_MINIMA) {
-			return true;
-		} else {
-			return false;
-		}
+		double MEDIA_MINIMA = 7.0;
+		return media() >= MEDIA_MINIMA;
 	}
 	
 	/**
