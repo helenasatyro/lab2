@@ -1,5 +1,6 @@
 package lab2.CLI;
 
+import java.net.StandardSocketOptions;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -21,22 +22,22 @@ public class Menu {
      * Scanner que será usado na interação com o usuário.
      */
     private final Scanner sc = new Scanner(System.in);
-
+    private final ArrayList<Disciplina> disciplinas;
     /**
      * Construtor de menu, aceita como parâmetros arrays de objetos que podem ser usados no programa.
      * Inicializa os ArrayLists e imprime a mensagem de abertura do programa.
      *
      * @param registrosTempoOnline ArrayList de objetos do tipo RegistroTempoOnline, pré-inicializado
      */
-    public Menu(ArrayList<RegistroTempoOnline> registrosTempoOnline, Descanso registrosDescanso) {
+    public Menu(ArrayList<RegistroTempoOnline> registrosTempoOnline, Descanso registrosDescanso, ArrayList<Disciplina> disciplinas) {
         this.registrosTempoOnline = registrosTempoOnline;
         this.registrosDescanso = registrosDescanso;
-        String textoInicial = """
+        this.disciplinas = disciplinas;
+        System.out.println("""
 
                 		      └[ ∵ ]┘\s
-                -- Olá! Sou RoBetinho, seu assistente acadêmico!""";
-
-        System.out.println(textoInicial);
+                -- Olá! Sou RoBetinho, seu assistente acadêmico!"""
+                );
     }
 
     /**
@@ -114,19 +115,19 @@ public class Menu {
 
         switch (escolha) {
             case "1":
-                Menu.menuDisciplinas();
+                menuDisciplinas();
                 break;
             case "2":
-                Menu.menuResumos();
+                menuResumos();
                 break;
             case "3":
-                Menu.menuDescanso();
+                menuDescanso();
                 break;
             case "4":
                 menuTempoOnline();
                 break;
             default:
-                Menu.sair();
+                sair();
         }
     }
 
@@ -146,65 +147,145 @@ public class Menu {
 
     private void menuDescanso() {
 
-        String textoRegistros = "";
-        String menuDescanso = "\n"
+        String textoDescanso = "\n"
                 + "-- DESCANSO --\n"
-                + " 	1. Adicionar Horas\n"
-                + " 	0. Voltar ao menu."
-                + " Digite uma opção (-1 para sair): ";
+                + "     C --Consultar status geral\n"
+                + "     H <horas> --Definir Horas de Descanso (ex: 2 14 define 14 horas)\n"
+                + "     S <semanas> --Definir Número de Semanas\n"
+                + "     E <emoji> --Definir emoji\n"
+                + "     0. Voltar ao menu.\n"
+                + " Digite um comando (outro para sair): ";
 
-        System.out.print(menuTempo);
-        int escolha = sc.nextInt();
-        sc.nextLine();
-        switch (escolha) {
-            case 1:
-                registrosTempoOnline.add(novoRegistro());
-                menuTempoOnline();
+        System.out.print(textoDescanso);
+        String escolha = sc.next();
+
+        switch (escolha.toUpperCase()) {
+            case "C":
+                System.out.println("    >>>STATUS: " + registrosDescanso.getStatusGeral());
+                sc.nextLine();
+                menuDescanso();
                 break;
-            case 0:
+            case "H":
+                int horas = sc.nextInt();
+                sc.nextLine();
+                registrosDescanso.defineHorasDescanso(horas);
+                System.out.println("    >>>Adicionadas " + horas + " horas." );
+                menuDescanso();
+                break;
+            case "S":
+                int semanas = sc.nextInt();
+                sc.nextLine();
+                registrosDescanso.defineNumeroSemanas(semanas);
+                System.out.println("    >>>Adicionadas " + semanas + " semanas." );
+                menuDescanso();
+                break;
+            case "E":
+                String emoji = sc.nextLine();
+                registrosDescanso.definirEmoji(emoji);
+                System.out.println("    >>>Definido emoji:  " + emoji );
+                menuDescanso();
+                break;
+            case "0":
+                sc.nextLine();
                 this.abrirMenu();
                 break;
-            case -1:
-                sair();
-                break;
             default:
-                System.out.println("\n--O que deseja fazer com " + registrosTempoOnline.get(escolha - 2) + "?");
-                System.out.print(
-                        """
-                                        
-                                ADD <horas> --Adicionar horas:\s
-                                VER --Verificar se a meta foi cumprida:\s
-                                 A:\s"""
-                );
+                sair();
+        }
+        menuDescanso();
+    }
 
-                String acao = sc.next();
-                switch (acao.toUpperCase()) {
-                    case "ADD":
-                        registrosTempoOnline.get(escolha - 2).adicionaTempoOnline(sc.nextInt());
-                        sc.nextLine();
-                        System.out.println("Adicionado.");
-                        break;
-                    case "VER":
-                        System.out.println("\nMeta atingida: " + registrosTempoOnline.get(escolha - 2).atingiuMetaTempoOnline());
-                        break;
+        private static void menuResumos () {
+            System.out.println("hi");
+        }
+
+        private void menuDisciplinas () {
+            String textoDisciplinas = "";
+
+            if (disciplinas.size() != 0) {
+                for (int i = 0; i < disciplinas.size(); i++) {
+                    textoDisciplinas += " 	" + (i + 2) + ". " + disciplinas.get(i) + "\n";
                 }
-                menuTempoOnline();
+            }
 
-    }
+            String menuDisciplinas = "\n"
+                    + "-- DISCIPLINAS --\n"
+                    + " 	1. Adicionar Disciplina\n"
+                    + textoDisciplinas
+                    + " 	0. Voltar ao menu."
+                    + " Digite uma opção (-1 para sair): ";
 
-    private static void menuResumos() {
-        // TODO Auto-generated method stub
+            System.out.print(menuDisciplinas);
+            int escolha = sc.nextInt();
+            sc.nextLine();
+            switch (escolha) {
+                case 1:
+                    disciplinas.add(novaDisciplina());
+                    menuDisciplinas();
+                    break;
+                case 0:
+                    this.abrirMenu();
+                    break;
+                case -1:
+                    sair();
+                    break;
+                default:
+                    System.out.println("\n--O que deseja fazer com " + disciplinas.get(escolha - 2) + "?");
+                    System.out.print(
+                            """
+                                            
+                                    ADD <horas> --Adicionar horas:\s
+                                    VER --Verificar se a meta foi cumprida:\s
+                                     A:\s"""
+                    );
 
-    }
+                    String acao = sc.next();
+                    switch (acao.toUpperCase()) {
+                        case "ADD":
+                            disciplinas.get(escolha - 2).cadastraNota(sc.nextInt(), sc.nextDouble());
+                            sc.nextLine();
+                            System.out.println("Adicionado.");
+                            break;
+                        case "VER":
+                            System.out.println("\nMeta atingida: " + registrosTempoOnline.get(escolha - 2).atingiuMetaTempoOnline());
+                            break;
+                    }
+                    menuDisciplinas();
+            }
 
-    private static void menuDisciplinas() {
-        // TODO Auto-generated method stub
+        }
 
-    }
+    private Disciplina novaDisciplina() {
 
-    private static void sair() {
-        System.out.println("\n-- Até a próxima!\n\n			Cc--- [┐∵]┘");
-        System.exit(0);
-    }
+        Disciplina disciplina;
+        System.out.print("\n--Nome da disciplina: ");
+        String nome = sc.nextLine();
+        System.out.print("--Quantidade de notas(enter para omitir): ");
+        String strQtdNotas = sc.nextLine();
+        System.out.println("Especificar pesos? (s/n): ");
+        if (strQtdNotas.equals("")) {
+            Double[] pesos = new Double[4];
+            for(int i = 0; i <= 4; i++) {
+                System.out.println("Peso da " + (i + 1) + "a nota: ");
+                pesos[i] = sc.nextDouble();
+            }
+            sc.nextLine();
+        } else {
+
+        }
+        System.out.print("--Quantidade de notas(enter para omitir): ");
+        String strPesos = sc.nextLine();
+        if (!strQtdNotas.equals("")) {
+            registro = new RegistroTempoOnline(nome, Integer.parseInt(strHoras));
+        } else {
+            registro = new RegistroTempoOnline(nome);
+        }
+        return registro;    }
+
+    private static void sair () {
+            System.out.println("\n-- Até a próxima!\n\n			Cc--- [┐∵]┘");
+            System.exit(0);
+        }
+
 }
 

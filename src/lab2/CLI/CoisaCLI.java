@@ -8,7 +8,9 @@ public class CoisaCLI {
 		// Inicialização dos ArrayLists para o menu:
 		ArrayList<RegistroTempoOnline> registrosTempo = new ArrayList<>();
 		Descanso registroDescanso = new Descanso();
-		Menu menu = new Menu(registrosTempo, registroDescanso);
+		ArrayList<Disciplina> disciplinas = new ArrayList<>();
+
+		Menu menu = new Menu(registrosTempo, registroDescanso, disciplinas);
 		menu.abrirMenu();
 	}
 }
