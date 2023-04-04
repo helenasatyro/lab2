@@ -1,8 +1,7 @@
 package lab2;
 
 /**
-* Classe que pretende auxiliar no 
-* controle das horas de descanso para gerenciamento de tempo
+* Auxilia no controle das horas de descanso para gerenciamento de tempo
 * de um aluno. O aluno está cansado por default
 * caso não tenha registrado horas de descanso ou 
 * número de semanas.
@@ -34,7 +33,7 @@ public class Descanso {
 	* Além disso, informa o emoji escolhido pelo usuário, separado por um espaço 
 	* e um hífen após o estado geral.
 	*
-	* @return a situação de descanso e o emoji quando aplicável.
+	* @return String situação de descanso e o emoji quando aplicável.
 	*/
 	public String getStatusGeral() {
 		String ultimoStatus = String.valueOf(statusGeral);

@@ -2,7 +2,7 @@ package lab2;
 import java.util.Arrays;
 
 /**
-* Classe que auxilia no controle de informações sobre uma disciplina.
+* Auxilia no controle de informações sobre uma disciplina.
 * A classe guarda um array de notas que podem ser repostas, um registro de horas estudadas,
 * o nome da disciplina, e algumas funcionalidades pertinentes ao contexto.
 *  

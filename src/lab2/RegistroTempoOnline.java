@@ -1,7 +1,6 @@
 package lab2;
 /**
-* Classe que pretende auxiliar no 
-* controle do tempo gasto na internet com uma disciplina remota pelo aluno. 
+* Auxilia no controle do tempo gasto na internet com uma disciplina remota pelo aluno.
 * Para cada disciplina, será criado um objeto para controle desse tempo.
 * 
 * O objeto deve armazenar o nome da disciplina (string), o tempo online esperado 

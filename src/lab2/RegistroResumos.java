@@ -2,7 +2,7 @@ package lab2;
 import java.util.Arrays;
 
 /**
-* Classe que auxilia no controle de resumos de um aluno, organizada por tema.
+* Auxilia no controle de resumos de um aluno, organizada por tema.
 * Permite adicionar, contabilizar, buscar e exibir resumos.
 *  
 * @author Maria Helena Sátyro Gomes Alves
