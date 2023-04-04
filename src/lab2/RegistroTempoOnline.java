@@ -12,19 +12,8 @@ package lab2;
 * @author Maria Helena Sátyro Gomes Alves
 */
 public class RegistroTempoOnline {
-	/**
-	* Nome da disciplina em string.
-	*/
 	private String nomeDisciplina;
-	/**
-	* Meta de tempo online que deve ser dedicado à disciplina, em horas.
-	* Por default tratamos de disciplinas de 60 horas, onde a meta é o dobro, 120.
-	* Pode ser passado como parâmetro do construtor.
-	*/
 	private int tempoOnlineEsperado;
-	/**
-	* Tempo online contabilizado em horas. Inicia em zero.
-	*/
 	private int tempoOnlineRegistrado;
 	
 	/**

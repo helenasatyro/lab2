@@ -8,17 +8,8 @@ import java.util.Arrays;
 * @author Maria Helena Sátyro Gomes Alves
 */
 public class RegistroResumos {
-	/**
-	* Array que irá conter os dados literais dos resumos, o texto em si.
-	*/
 	private final String[] resumos;
-	/**
-	* Array que contém os temas dos resumos.
-	*/
 	private final String[] temas;
-	/**
-	* Quantidade de vezes que foram adicionados resumos, independente do número de resumos que permanecem.
-	*/
 	private int numeroRegistros;
 	
 	/**
@@ -28,7 +19,6 @@ public class RegistroResumos {
 	* 
 	* @param numeroDeResumos int, a capacidade do array de resumos.
 	*/
-	
 	public RegistroResumos(int numeroDeResumos) {
 		this.resumos = new String[numeroDeResumos];
 		this.temas = new String[numeroDeResumos];
@@ -53,10 +43,10 @@ public class RegistroResumos {
 
 		numeroRegistros++;
 	}
-	
+
 	/**
 	* Método público para obter o array de resumos.
-	* 
+	*
 	* @return retorna o array de resumos com temas.
 	*/
 	public String[] pegaResumos() {

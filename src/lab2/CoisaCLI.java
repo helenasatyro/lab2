@@ -11,55 +11,25 @@ import java.util.Scanner;
  */
 public class CoisaCLI {
     public static void main(String[] args) {
-        // Inicialização dos ArrayLists para o menu:
-        ArrayList<RegistroTempoOnline> registrosTempo = new ArrayList<>();
-        Descanso registroDescanso = new Descanso();
-        ArrayList<Disciplina> disciplinas = new ArrayList<>();
-        RegistroResumos resumos = new RegistroResumos(0);
-
         // Inicialização do menu
-        CoisaCLI menu = new CoisaCLI(registrosTempo, registroDescanso, disciplinas, resumos);
+        CoisaCLI menu = new CoisaCLI();
         menu.abrirMenu();
     }
-    /**
-     * Constante ArrayList contendo os objetos RegistroTempoOnline para o menu de tempo online.
-     */
     private final ArrayList<RegistroTempoOnline> registrosTempoOnline;
-
-    /**
-     * Constante ArrayList contendo os objetos Disciplina para o menu de disciplinas.
-     */
     private final ArrayList<Disciplina> disciplinas;
-
-    /**
-     * Constante Descanso para controle de informações sobre descanso.
-     */
     private final Descanso registrosDescanso;
-
-    /**
-     * Objeto RegistroResumos para controle de resumos.
-     */
     private RegistroResumos resumos;
-
-    /**
-     * Scanner que será usado na interação com o usuário.
-     */
     private final Scanner sc = new Scanner(System.in);
 
     /**
      * Construtor de menu, aceita como parâmetros arrays de objetos que podem ser usados no programa.
-     * Inicializa os ArrayLists e imprime a mensagem de abertura do programa.
-     *
-     * @param registrosTempoOnline ArrayList de objetos do tipo RegistroTempoOnline, pré-inicializado.
-     * @param registrosDescanso objeto Descanso.
-     * @param disciplinas ArrayList de objetos Disciplinas.
-     * @param resumos objeto resumos inicializado com 0 de espaço.
+     * Inicializa os ArrayLists e imprime a mensagem de abertura do programa.*
      */
-    public CoisaCLI(ArrayList<RegistroTempoOnline> registrosTempoOnline, Descanso registrosDescanso, ArrayList<Disciplina> disciplinas, RegistroResumos resumos ) {
-        this.registrosTempoOnline = registrosTempoOnline;
-        this.registrosDescanso = registrosDescanso;
-        this.disciplinas = disciplinas;
-        this.resumos = resumos;
+    public CoisaCLI( ) {
+        this.registrosTempoOnline = new ArrayList<>();
+        this.registrosDescanso = new Descanso();
+        this.disciplinas = new ArrayList<>();
+        this.resumos =  new RegistroResumos(0);
         // Texto de cabeçalho da CLI
         System.out.println("""
 
@@ -97,10 +67,6 @@ public class CoisaCLI {
             default -> sair();
         }
     }
-
-    /**
-     * Exibe o menu para controle de tempo online.
-     */
     private void menuTempoOnline() {
         String textoRegistros = "";
         if (registrosTempoOnline.size() != 0) {
@@ -147,11 +113,6 @@ public class CoisaCLI {
             }
         }
     }
-
-    /**
-     * Implementa uma interface de usuário para o construtor de RegistroTempoOnline
-     * @return objeto RegistroTempoOnline que será adicionado ao array de registros de tempo.
-     */
     private RegistroTempoOnline novoRegistro() {
         RegistroTempoOnline registro;
 
@@ -167,10 +128,6 @@ public class CoisaCLI {
         }
         return registro;
     }
-
-    /**
-     * Exibe o menu para interação com o objeto Descanso.
-     */
     private void menuDescanso() {
         System.out.print("""
 
@@ -287,10 +244,6 @@ public class CoisaCLI {
                             // Na prática, esse programa é pequeno e tem propósitos educativos, então decidi manter
                             // a implementação para poder comentar sobre.
         }
-
-    /**
-     * Exibe o menu para controle de notas, pesos e tempo dedicado a uma disciplina.
-     */
     private void menuDisciplinas () {
             String textoDisciplinas = "";
 
@@ -353,11 +306,6 @@ public class CoisaCLI {
             }
 
         }
-
-    /**
-     * Implementa uma interface de usuário para o construtor de um objeto Disciplina, que será adicionado ao array de disciplinas.
-     * @return Disciplina
-     */
     private Disciplina novaDisciplina() {
         Disciplina disciplina;
 
@@ -385,10 +333,6 @@ public class CoisaCLI {
         disciplina = new Disciplina(nome, qtdNotas, pesos);
         return disciplina;
     }
-
-    /**
-     * Exibe uma mensagem de despedida, fecha o scanner e encerra o programa sem erros.
-     */
     private void sair () {
             System.out.println("\n-- Até a próxima!\n\n			Cc--- [┐∵]┘");
             sc.close();

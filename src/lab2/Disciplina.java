@@ -9,17 +9,8 @@ import java.util.Arrays;
 * @author Maria Helena Sátyro Gomes Alves
 */
 public class Disciplina {
-	/**
-	* Array de notas da disciplina. Até quatro.
-	*/
 	private final double[] notas;
-	/**
-	* Horas de estudo cadastradas.
-	*/
 	private int horasCadastradas;
-	/**
-	* Nome da disciplina em string.
-	*/
 	private String nomeDisciplina;
 	private double[] pesos;
 	
@@ -78,12 +69,6 @@ public class Disciplina {
 	public void cadastraHoras(int horas) {
 		horasCadastradas += horas;
 	}
-	
-	/**
-	* Retorna a média entre as notas, não arredondada.
-	*
-	* @return em double, a média entre as notas, com ou sem peso.
-	*/
 	private double media() {
 		double soma = 0;
 		double somaPesos = 0;

@@ -11,24 +11,9 @@ package lab2;
 */
 
 public class Descanso {
-	/**
-	* Horas que o aluno descansou na quantidade de semanas determinada.
-	*/
 	private int horasDescanso;
-	
-	/**
-	* Número de semanas em que o aluno registrou as horas de descanso.
-	*/
 	private int numeroSemanas;
-	
-	/**
-	* Estado de descanso do aluno, "cansado" por default, e "descansado" quando se atinge a meta de horas de descanso semanal.
-	*/
 	private String statusGeral;
-	
-	/**
-	* Último emoji registrado.
-	*/
 	private String emoji;
 	/**
 	* Constrói um objeto Descanso, sem parâmetros. 
