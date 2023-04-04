@@ -2,7 +2,7 @@ package lab2;
 
 /**
 * Classe que pretende auxiliar no 
-* controle das horas de descanso para time management
+* controle das horas de descanso para gerenciamento de tempo
 * de um aluno. O aluno está cansado por default
 * caso não tenha registrado horas de descanso ou 
 * número de semanas.
@@ -17,7 +17,7 @@ public class Descanso {
 	private int horasDescanso;
 	
 	/**
-	* Número de semanas em que o aluno resgitrou as horas de descanso.
+	* Número de semanas em que o aluno registrou as horas de descanso.
 	*/
 	private int numeroSemanas;
 	
