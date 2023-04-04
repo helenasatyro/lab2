@@ -12,8 +12,8 @@ package lab2;
 * @author Maria Helena Sátyro Gomes Alves
 */
 public class RegistroTempoOnline {
-	private String nomeDisciplina;
-	private int tempoOnlineEsperado;
+	private final String nomeDisciplina;
+	private final int tempoOnlineEsperado;
 	private int tempoOnlineRegistrado;
 	
 	/**

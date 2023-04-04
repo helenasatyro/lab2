@@ -11,8 +11,8 @@ import java.util.Arrays;
 public class Disciplina {
 	private final double[] notas;
 	private int horasCadastradas;
-	private String nomeDisciplina;
-	private double[] pesos;
+	private final String nomeDisciplina;
+	private final double[] pesos;
 	
 	/**
 	* Constrói um objeto Disciplina a partir do nome, quantidade de notas 
